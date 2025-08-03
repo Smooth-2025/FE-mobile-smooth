@@ -73,3 +73,7 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# React Native auto-linked fonts
+android/app/src/main/assets/fonts/
+ios/*/Resources/fonts/
