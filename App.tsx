@@ -1,28 +1,31 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import { ThemeProvider } from '@emotion/react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import ScreenLayout from './src/layouts/ScreenLayout';
+import AppNavigator from './src/navigations/AppNavigator';
+import store from './src/store';
+import { theme } from './src/styles/theme';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
+  const Tab = createBottomTabNavigator();
+  const Stack = createNativeStackNavigator();
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <SafeAreaProvider>
+          <ScreenLayout>
+            <StatusBar barStyle='dark-content' />
+            <SafeAreaView style={{ flex: 1 }}>
+              <AppNavigator />
+            </SafeAreaView>
+          </ScreenLayout>
+        </SafeAreaProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
