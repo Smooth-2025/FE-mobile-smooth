@@ -62,15 +62,14 @@ const PasswordScreen = () => {
       return;
     }
 
-    console.log('다음 페이지로 이동!', { password });
-    // TODO: 개인정보 입력 페이지로 이동
+    navigation.navigate('PersonalInfo');
   };
 
   return (
     <Container>
       <Header>
         <BackButton onPress={() => navigation.goBack()}>
-          <BackIcon>←</BackIcon>
+          <BackIcon>← 뒤로가기</BackIcon>
         </BackButton>
       </Header>
 

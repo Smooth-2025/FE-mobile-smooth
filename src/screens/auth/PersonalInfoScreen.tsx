@@ -154,11 +154,11 @@ const PersonalInfoScreen = () => {
     <Container>
       <Header>
         <BackButton onPress={() => navigation.goBack()}>
-          <BackIcon>←</BackIcon>
+          <BackIcon>← 뒤로가기</BackIcon>
         </BackButton>
       </Header>
 
-      <ProgressBar currentStep={3} totalSteps={4} />
+      <ProgressBar currentStep={2} totalSteps={4} />
 
       <Title>이름을 입력해주세요</Title>
 
