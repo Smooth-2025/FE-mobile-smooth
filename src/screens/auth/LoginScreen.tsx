@@ -2,7 +2,7 @@ import { Button, Input, Text } from '@components/common';
 import styled from '@emotion/native';
 import { theme } from '@styles/theme';
 import React, { useState } from 'react';
-import { Alert } from 'react-native';
+import Toast from 'react-native-toast-message';
 
 const ContentWrapper = styled.View`
   flex: 1;
@@ -67,24 +67,39 @@ const LoginScreen = () => {
   };
 
   const handleLogin = () => {
-    // 이메일 유효성 검사
     if (!email) {
-      Alert.alert('알림', '이메일을 입력해주세요');
+      Toast.show({
+        type: 'error',
+        text1: '이메일을 입력해주세요',
+        position: 'bottom',
+      });
       return;
     }
 
     if (emailError) {
-      Alert.alert('알림', '이메일 형식을 확인해주세요');
+      Toast.show({
+        type: 'error',
+        text1: '이메일 형식을 확인해주세요',
+        position: 'bottom',
+      });
       return;
     }
 
     if (!password) {
-      Alert.alert('알림', '비밀번호를 입력해주세요');
+      Toast.show({
+        type: 'error',
+        text1: '비밀번호를 입력해주세요',
+        position: 'bottom',
+      });
       return;
     }
 
-    // 임시로 항상 실패하게 만들어서 토스트 테스트
-    Alert.alert('로그인 실패', '회원정보가 일치하지 않습니다');
+    // 로그인 실패 토스트
+    Toast.show({
+      type: 'error',
+      text1: '회원정보가 일치하지 않습니다',
+      position: 'bottom',
+    });
   };
 
   return (

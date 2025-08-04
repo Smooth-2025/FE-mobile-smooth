@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 import { Provider } from 'react-redux';
 import ScreenLayout from './src/layouts/ScreenLayout';
 import AppNavigator from './src/navigations/AppNavigator';
@@ -22,6 +23,7 @@ function App() {
               <AppNavigator />
             </SafeAreaView>
           </ScreenLayout>
+          <Toast />
         </SafeAreaProvider>
       </ThemeProvider>
     </Provider>
