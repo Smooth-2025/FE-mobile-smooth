@@ -1,4 +1,4 @@
-import { Button, Input, Text } from '@components/common';
+import { Button, Input, ProgressBar, Text } from '@components/common';
 import styled from '@emotion/native';
 import { useNavigation } from '@react-navigation/native';
 import { theme } from '@styles/theme';
@@ -49,7 +49,7 @@ const ConfirmButton = styled(Button)`
 `;
 
 const SignupScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation() as any; // 나중에 타입 정리할지도
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
 
@@ -91,12 +91,7 @@ const SignupScreen = () => {
       return;
     }
 
-    // 임시로 성공 메시지
-    Toast.show({
-      type: 'success',
-      text1: '회원가입이 완료되었습니다!',
-      position: 'bottom',
-    });
+    navigation.navigate('Password');
   };
 
   return (
@@ -106,6 +101,8 @@ const SignupScreen = () => {
           <BackIcon>← 뒤로가기</BackIcon>
         </BackButton>
       </Header>
+
+      <ProgressBar currentStep={1} totalSteps={4} />
 
       <Title>이메일을 입력해주세요</Title>
       <Subtitle>로그인에 사용할 이메일입니다</Subtitle>
