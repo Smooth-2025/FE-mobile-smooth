@@ -1,13 +1,12 @@
+import AppNavigator from '@/navigations/AppNavigator';
+import store from '@/store';
+import { theme } from '@/styles/theme';
 import { ThemeProvider } from '@emotion/react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import ScreenLayout from './src/layouts/ScreenLayout';
-import AppNavigator from './src/navigations/AppNavigator';
-import store from './src/store';
-import { theme } from './src/styles/theme';
 
 function App() {
   const Tab = createBottomTabNavigator();
@@ -16,12 +15,10 @@ function App() {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <SafeAreaProvider>
-          <ScreenLayout>
-            <StatusBar barStyle='dark-content' />
-            <SafeAreaView style={{ flex: 1 }}>
-              <AppNavigator />
-            </SafeAreaView>
-          </ScreenLayout>
+          <StatusBar barStyle='dark-content' />
+          <SafeAreaView style={{ flex: 1 }}>
+            <AppNavigator />
+          </SafeAreaView>
         </SafeAreaProvider>
       </ThemeProvider>
     </Provider>
