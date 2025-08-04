@@ -160,6 +160,13 @@ const TermsScreen = () => {
       </CheckboxRow>
 
       <TermsContainer>
+        <CheckboxRow onPress={handleTermsAgree}>
+          <CheckboxIcon checked={termsAgreed}>
+            {termsAgreed && <CheckIcon>✓</CheckIcon>}
+          </CheckboxIcon>
+          <CheckboxText>이용약관 (필수)</CheckboxText>
+        </CheckboxRow>
+
         <TermsBox>
           <TermsTitle>이용약관 (필수)</TermsTitle>
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -174,13 +181,12 @@ const TermsScreen = () => {
           </ScrollView>
         </TermsBox>
 
-        <CheckboxRow onPress={handleTermsAgree}>
-          <CheckboxIcon checked={termsAgreed}>
-            {termsAgreed && <CheckIcon>✓</CheckIcon>}
+        <CheckboxRow onPress={handlePrivacyAgree}>
+          <CheckboxIcon checked={privacyAgreed}>
+            {privacyAgreed && <CheckIcon>✓</CheckIcon>}
           </CheckboxIcon>
-          <CheckboxText>이용약관 (필수)</CheckboxText>
+          <CheckboxText>개인정보처리방침 (필수)</CheckboxText>
         </CheckboxRow>
-
         <TermsBox>
           <TermsTitle>개인정보처리방침 (필수)</TermsTitle>
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -194,13 +200,6 @@ const TermsScreen = () => {
             </TermsContent>
           </ScrollView>
         </TermsBox>
-
-        <CheckboxRow onPress={handlePrivacyAgree}>
-          <CheckboxIcon checked={privacyAgreed}>
-            {privacyAgreed && <CheckIcon>✓</CheckIcon>}
-          </CheckboxIcon>
-          <CheckboxText>개인정보처리방침 (필수)</CheckboxText>
-        </CheckboxRow>
       </TermsContainer>
 
       <ConfirmButton
