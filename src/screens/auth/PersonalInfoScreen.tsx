@@ -81,7 +81,7 @@ const PersonalInfoScreen = () => {
 
   const [nameError, setNameError] = useState('');
   const [phoneError, setPhoneError] = useState('');
-  const [genderError, setGenderError] = useState('');
+  const [genderError, setGenderError] = useState('성별을 선택해주세요');
 
   // 유효성 검사
   const validateName = (name: string) => {
@@ -133,8 +133,6 @@ const PersonalInfoScreen = () => {
     }
     if (!gender) {
       setGenderError('성별을 선택해주세요');
-    } else {
-      setGenderError('');
     }
 
     if (!isFormValid) {
