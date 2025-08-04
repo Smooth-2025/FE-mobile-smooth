@@ -1,5 +1,6 @@
 import { Button, Input, Text } from '@components/common';
 import styled from '@emotion/native';
+import { useNavigation } from '@react-navigation/native';
 import { theme } from '@styles/theme';
 import React, { useState } from 'react';
 import Toast from 'react-native-toast-message';
@@ -48,6 +49,7 @@ const ConfirmButton = styled(Button)`
 `;
 
 const SignupScreen = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
 
@@ -100,8 +102,8 @@ const SignupScreen = () => {
   return (
     <Container>
       <Header>
-        <BackButton onPress={() => console.log('뒤로가기')}>
-          <BackIcon>←</BackIcon>
+        <BackButton onPress={() => navigation.goBack()}>
+          <BackIcon>← 뒤로가기</BackIcon>
         </BackButton>
       </Header>
 
