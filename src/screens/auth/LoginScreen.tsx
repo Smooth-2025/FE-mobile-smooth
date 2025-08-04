@@ -31,9 +31,13 @@ const LoginButton = styled(Button)`
   margin-bottom: 30px;
 `;
 
+const SignupButton = styled.TouchableOpacity`
+  align-items: center;
+  padding: 10px;
+`;
+
 const SignupText = styled(Text)`
   color: ${theme.colors.neutral500};
-  text-align: center;
   font-size: 14px;
 `;
 
@@ -92,7 +96,9 @@ const LoginScreen = () => {
         bgColor={theme.colors.primary600}
       />
 
-      <SignupText>이메일로 가입하기</SignupText>
+      <SignupButton onPress={() => console.log('회원가입 페이지로 이동!')}>
+        <SignupText>이메일로 가입하기</SignupText>
+      </SignupButton>
     </ContentWrapper>
   );
 };
