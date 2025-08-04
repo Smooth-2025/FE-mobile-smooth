@@ -15,7 +15,7 @@ const AppNavigator = () => {
         {/* <Stack.Screen name='Splash' component={SplashScreen} /> */}
         <Stack.Screen name='Login' component={LoginScreen} />
         <Stack.Screen name='Signup' component={SignupScreen} />
-        <Stack.Screen name='Password' component={PasswordScreen} />'
+        <Stack.Screen name='Password' component={PasswordScreen} />
         <Stack.Screen name='Main' component={MainTabs} />
       </Stack.Navigator>
     </NavigationContainer>
