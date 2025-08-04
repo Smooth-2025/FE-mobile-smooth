@@ -144,8 +144,7 @@ const PersonalInfoScreen = () => {
       return;
     }
 
-    console.log('약관동의 페이지로 이동!', { name, phone, gender });
-    // TODO: 약관동의 페이지로 이동
+    navigation.navigate('Terms');
   };
 
   return (
