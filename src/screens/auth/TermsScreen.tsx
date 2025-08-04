@@ -1,8 +1,10 @@
+// src/screens/auth/TermsScreen.tsx 전체 수정
 import { Button, ProgressBar, Text } from '@components/common';
 import styled from '@emotion/native';
 import { useNavigation } from '@react-navigation/native';
 import { theme } from '@styles/theme';
 import React, { useState } from 'react';
+import { ScrollView } from 'react-native';
 import Toast from 'react-native-toast-message';
 
 const Container = styled.View`
@@ -32,10 +34,6 @@ const Title = styled(Text)`
   margin-bottom: 40px;
 `;
 
-const CheckboxContainer = styled.View`
-  margin-bottom: 20px;
-`;
-
 const CheckboxRow = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
@@ -59,21 +57,40 @@ const CheckIcon = styled(Text)`
   font-size: 16px;
 `;
 
-const CheckboxText = styled(Text)<{ isMain?: boolean }>`
+const CheckboxText = styled(Text)`
   flex: 1;
-  font-size: ${({ isMain }) => (isMain ? '16px' : '14px')};
-  font-weight: ${({ isMain }) => (isMain ? 'bold' : 'normal')};
+  font-size: 16px;
   color: ${theme.colors.neutral700};
 `;
 
-const Divider = styled.View`
-  height: 1px;
-  background-color: ${theme.colors.neutral200};
-  margin: 16px 0;
+const TermsContainer = styled.View`
+  flex: 1;
+  margin: 20px 0;
 `;
 
-const CompleteButton = styled(Button)`
-  margin-top: 30px;
+const TermsBox = styled.View`
+  background-color: ${theme.colors.neutral50};
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  max-height: 150px;
+`;
+
+const TermsTitle = styled(Text)`
+  font-size: 14px;
+  font-weight: bold;
+  color: ${theme.colors.primary600};
+  margin-bottom: 8px;
+`;
+
+const TermsContent = styled(Text)`
+  font-size: 12px;
+  color: ${theme.colors.neutral600};
+  line-height: 18px;
+`;
+
+const ConfirmButton = styled(Button)`
+  margin-top: 20px;
 `;
 
 const TermsScreen = () => {
@@ -110,7 +127,7 @@ const TermsScreen = () => {
 
   const isFormValid = termsAgreed && privacyAgreed;
 
-  const handleComplete = () => {
+  const handleConfirm = () => {
     if (!isFormValid) {
       Toast.show({
         type: 'error',
@@ -120,21 +137,9 @@ const TermsScreen = () => {
       return;
     }
 
-    Toast.show({
-      type: 'success',
-      text1: '회원가입이 완료되었습니다!',
-      position: 'bottom',
-    });
-
-    console.log('회원가입 완료!', {
-      termsAgreed,
-      privacyAgreed,
-    });
-
-    // TODO: 실제 회원가입 API 호출 후 로그인 페이지로 이동
-    setTimeout(() => {
-      navigation.navigate('Login');
-    }, 2000);
+    console.log('응급정보 입력 페이지로 이동!');
+    // TODO: 응급정보 입력 페이지로 이동
+    // navigation.navigate('EmergencyInfo');
   };
 
   return (
@@ -145,36 +150,62 @@ const TermsScreen = () => {
         </BackButton>
       </Header>
 
-      <ProgressBar currentStep={4} totalSteps={4} />
+      <ProgressBar currentStep={3} totalSteps={4} />
 
       <Title>약관에 동의해주세요</Title>
 
-      <CheckboxContainer>
-        <CheckboxRow onPress={handleAllAgree}>
-          <CheckboxIcon checked={allAgreed}>{allAgreed && <CheckIcon>✓</CheckIcon>}</CheckboxIcon>
-          <CheckboxText isMain>전체 동의</CheckboxText>
-        </CheckboxRow>
+      <CheckboxRow onPress={handleAllAgree}>
+        <CheckboxIcon checked={allAgreed}>{allAgreed && <CheckIcon>✓</CheckIcon>}</CheckboxIcon>
+        <CheckboxText>약관 전체 동의</CheckboxText>
+      </CheckboxRow>
 
-        <Divider />
+      <TermsContainer>
+        <TermsBox>
+          <TermsTitle>이용약관 (필수)</TermsTitle>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <TermsContent>
+              제1조 (목적) 이 약관은 회사가 제공하는 서비스의 이용조건 및 절차, 회사와 회원간의
+              권리, 의무 및 기타 필요한 사항을 규정함을 목적으로 합니다.{'\n\n'}
+              제2조 (정의) 이 약관에서 사용하는 용어의 정의는 다음과 같습니다.{'\n'}
+              1. "서비스"라 함은 회사가 제공하는 모든 서비스를 의미합니다.{'\n'}
+              2. "회원"이라 함은 회사와 서비스 이용계약을 체결한 자를 의미합니다.{'\n\n'}
+              제3조 (약관의 효력 및 변경) 이 약관은 서비스 화면에 게시하여 공시합니다.
+            </TermsContent>
+          </ScrollView>
+        </TermsBox>
 
         <CheckboxRow onPress={handleTermsAgree}>
           <CheckboxIcon checked={termsAgreed}>
             {termsAgreed && <CheckIcon>✓</CheckIcon>}
           </CheckboxIcon>
-          <CheckboxText>[필수] 이용약관에 동의</CheckboxText>
+          <CheckboxText>이용약관 (필수)</CheckboxText>
         </CheckboxRow>
+
+        <TermsBox>
+          <TermsTitle>개인정보처리방침 (필수)</TermsTitle>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <TermsContent>
+              개인정보보호법에 따라 회사는 개인정보 처리방침을 정하여 이용자 권익 보호에 최선을
+              다하고 있습니다.{'\n\n'}
+              1. 개인정보의 처리 목적{'\n'}- 회원 가입의사 확인, 회원제 서비스 제공{'\n'}- 본인
+              식별·인증, 회원자격 유지·관리{'\n\n'}
+              2. 개인정보의 처리 및 보유 기간{'\n'}- 회원탈퇴시까지{'\n'}- 단, 관계법령 위반에 따른
+              수사·조사 등이 진행중인 경우에는 해당 수사·조사 종료시까지
+            </TermsContent>
+          </ScrollView>
+        </TermsBox>
 
         <CheckboxRow onPress={handlePrivacyAgree}>
           <CheckboxIcon checked={privacyAgreed}>
             {privacyAgreed && <CheckIcon>✓</CheckIcon>}
           </CheckboxIcon>
-          <CheckboxText>[필수] 개인정보처리방침에 동의</CheckboxText>
+          <CheckboxText>개인정보처리방침 (필수)</CheckboxText>
         </CheckboxRow>
-      </CheckboxContainer>
+      </TermsContainer>
 
-      <CompleteButton
-        label='가입완료'
-        onPress={handleComplete}
+      <ConfirmButton
+        label='확인'
+        onPress={handleConfirm}
         bgColor={isFormValid ? theme.colors.primary600 : theme.colors.neutral200}
         textColor={isFormValid ? theme.colors.white : theme.colors.neutral400}
         disabled={!isFormValid}
