@@ -2,6 +2,7 @@ import { Button, Input, Text } from '@components/common';
 import styled from '@emotion/native';
 import { theme } from '@styles/theme';
 import React, { useState } from 'react';
+import { Alert } from 'react-native';
 
 const ContentWrapper = styled.View`
   flex: 1;
@@ -65,6 +66,27 @@ const LoginScreen = () => {
     }
   };
 
+  const handleLogin = () => {
+    // 이메일 유효성 검사
+    if (!email) {
+      Alert.alert('알림', '이메일을 입력해주세요');
+      return;
+    }
+
+    if (emailError) {
+      Alert.alert('알림', '이메일 형식을 확인해주세요');
+      return;
+    }
+
+    if (!password) {
+      Alert.alert('알림', '비밀번호를 입력해주세요');
+      return;
+    }
+
+    // 임시로 항상 실패하게 만들어서 토스트 테스트
+    Alert.alert('로그인 실패', '회원정보가 일치하지 않습니다');
+  };
+
   return (
     <ContentWrapper>
       <Title>smooth</Title>
@@ -90,11 +112,7 @@ const LoginScreen = () => {
         />
       </InputContainer>
 
-      <LoginButton
-        label='로그인'
-        onPress={() => console.log('로그인 클릭!', { email, password })}
-        bgColor={theme.colors.primary600}
-      />
+      <LoginButton label='로그인' onPress={handleLogin} bgColor={theme.colors.primary600} />
 
       <SignupButton onPress={() => console.log('회원가입 페이지로 이동!')}>
         <SignupText>이메일로 가입하기</SignupText>
