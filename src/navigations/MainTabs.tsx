@@ -1,8 +1,9 @@
 import { Icon } from '@/components/common/icons';
 import { IconName } from '@/components/common/icons/types';
-import TestScreen from '@/screens/drive/testScreen';
-import HomeScreens from '@/screens/home/HomeScreens';
+import DriveScreen from '@/screens/drive/DriveScreen';
+import HomeScreen from '@/screens/home/HomeScreen';
 import MypageScreen from '@/screens/myPage/MypageScreen';
+import ReportScreen from '@/screens/report/ReportScreen';
 import { theme } from '@/styles/theme';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -11,19 +12,19 @@ const Tab = createBottomTabNavigator();
 const TAB_CONFIGS = [
   {
     name: 'Home' as const,
-    component: HomeScreens,
+    component: HomeScreen,
     title: '홈',
     iconName: 'home' as IconName,
   },
   {
     name: 'Drive' as const,
-    component: TestScreen,
+    component: DriveScreen,
     title: '주행',
     iconName: 'car' as IconName,
   },
   {
     name: 'Report' as const,
-    component: HomeScreens,
+    component: ReportScreen,
     title: '리포트',
     iconName: 'report' as IconName,
   },

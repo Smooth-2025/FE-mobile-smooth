@@ -1,5 +1,5 @@
+import { Text } from '@/components/common';
 import { View } from 'react-native';
-import { Text } from '../../components/common';
 
 export default function MypageScreen() {
   return (
