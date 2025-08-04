@@ -1,5 +1,6 @@
 import { Button, Input, Text } from '@components/common';
 import styled from '@emotion/native';
+import { useNavigation } from '@react-navigation/native';
 import { theme } from '@styles/theme';
 import React, { useState } from 'react';
 import Toast from 'react-native-toast-message';
@@ -43,6 +44,7 @@ const SignupText = styled(Text)`
 `;
 
 const LoginScreen = () => {
+  const navigation = useNavigation() as any; //나중에 타입정리 할지도
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -129,7 +131,7 @@ const LoginScreen = () => {
 
       <LoginButton label='로그인' onPress={handleLogin} bgColor={theme.colors.primary600} />
 
-      <SignupButton onPress={() => console.log('회원가입 페이지로 이동!')}>
+      <SignupButton onPress={() => navigation.navigate('Signup')}>
         <SignupText>이메일로 가입하기</SignupText>
       </SignupButton>
     </ContentWrapper>
