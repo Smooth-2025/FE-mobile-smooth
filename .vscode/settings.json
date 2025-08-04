@@ -22,5 +22,6 @@
     "**/.git": true,
     "**/android": true,
     "**/ios": true
-  }
+  },
+  "java.compile.nullAnalysis.mode": "disabled"
 }
