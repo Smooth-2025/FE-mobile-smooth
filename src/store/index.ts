@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import type { TypedUseSelectorHook } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
+import alertReducer from './slices/alertSlice';
 import counterReducer from './slices/test';
 
 const store = configureStore({
   reducer: {
-    // 각 slice를 여기에 등록
+    alert: alertReducer,
     test: counterReducer,
   },
 });
