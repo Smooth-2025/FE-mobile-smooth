@@ -1,3 +1,5 @@
+// src/services/websocket/types.ts
+
 export enum ConnectionStatus {
   DISCONNECTED = 'DISCONNECTED',
   CONNECTING = 'CONNECTING',
@@ -15,44 +17,25 @@ export interface WebSocketConfig {
   heartbeatOutgoing: number;
 }
 
-export interface AlertMessage {
-  id?: string;
-  message: string;
-  timestamp: number;
-  type?: string;
-  userId: string;
-  isRead?: boolean;
-}
-
+// 차량 연동용 콜백 타입
 export interface WebSocketCallbacks {
   onConnect?: () => void;
   onDisconnect?: () => void;
   onError?: (error: any) => void;
-  onMessage?: (message: AlertMessage) => void;
   onStatusChange?: (status: ConnectionStatus) => void;
 }
 
-export interface TokenResponse {
-  token: string;
-  userId: string;
-}
-
-// Hook 반환 타입
+// Hook 반환 타입 (차량용)
 export interface UseWebSocketReturn {
   connectionStatus: ConnectionStatus;
   isConnected: boolean;
-  alerts: AlertMessage[];
-  unreadCount: number;
   connect: () => Promise<void>;
   disconnect: () => void;
   reconnect: () => Promise<void>;
-  markAsRead: (alertId: string) => void;
-  clearAlerts: () => void;
+  sendCommand: (command: string, data: any) => boolean;
 }
 
-// Hook props 타입
+// Hook props 타입 (차량용)
 export interface UseWebSocketProps {
-  token?: string;
-  userId?: string;
   autoConnect?: boolean;
 }
