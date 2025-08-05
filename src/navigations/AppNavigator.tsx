@@ -10,7 +10,7 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName='Login'
+        initialRouteName='Main'
         screenOptions={{
           headerShown: false,
           contentStyle: { backgroundColor: theme.colors.bg_page },

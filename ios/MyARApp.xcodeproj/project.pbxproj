@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-MyARApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-MyARApp.a */; };
+		0F4C6B023F20469F8774C680 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93B773A79685424B9EA6B32D /* Pretendard-Bold.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		3690E7BF0295430D98ED300E /* Pretendard-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 501E527102764C8EBAD6021D /* Pretendard-Thin.ttf */; };
 		5DB080702E4AC5795CE38259 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		E97BE939B6334F94AE15F722 /* Pretendard-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83D313F9B42F46609DBD9018 /* Pretendard-Black.ttf */; };
-		0F4C6B023F20469F8774C680 /* Pretendard-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93B773A79685424B9EA6B32D /* Pretendard-Bold.ttf */; };
-		E1AE92E7041942B09781B940 /* Pretendard-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59A6B8982739466E816C5D92 /* Pretendard-ExtraBold.ttf */; };
-		82B30C6810C34B609CFE9EFB /* Pretendard-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECED901BCAA4B5AAC2EEE9B /* Pretendard-ExtraLight.ttf */; };
-		D056745B6CBE4BAD964D9001 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83CE9EB7AC124E64BCEB7F6E /* Pretendard-Light.ttf */; };
-		8AE68D58730B4951B395DBB5 /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B964946B5D488BA7C805D7 /* Pretendard-Medium.ttf */; };
-		859FD7C77272453891A7426B /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D5C9AABA2994C7A92B1EE5E /* Pretendard-Regular.ttf */; };
 		7DA5A194B04E4907B3AC4403 /* Pretendard-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 192259344E4F4BFDA2027256 /* Pretendard-SemiBold.ttf */; };
-		3690E7BF0295430D98ED300E /* Pretendard-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 501E527102764C8EBAD6021D /* Pretendard-Thin.ttf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		82B30C6810C34B609CFE9EFB /* Pretendard-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EECED901BCAA4B5AAC2EEE9B /* Pretendard-ExtraLight.ttf */; };
+		859FD7C77272453891A7426B /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D5C9AABA2994C7A92B1EE5E /* Pretendard-Regular.ttf */; };
+		8AE68D58730B4951B395DBB5 /* Pretendard-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3B964946B5D488BA7C805D7 /* Pretendard-Medium.ttf */; };
+		D056745B6CBE4BAD964D9001 /* Pretendard-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83CE9EB7AC124E64BCEB7F6E /* Pretendard-Light.ttf */; };
+		E1AE92E7041942B09781B940 /* Pretendard-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59A6B8982739466E816C5D92 /* Pretendard-ExtraBold.ttf */; };
+		E97BE939B6334F94AE15F722 /* Pretendard-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83D313F9B42F46609DBD9018 /* Pretendard-Black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,21 +28,22 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MyARApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyARApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = MyARApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		192259344E4F4BFDA2027256 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-SemiBold.ttf"; path = "../src/assets/fonts/Pretendard-SemiBold.ttf"; sourceTree = "<group>"; };
+		360124732E4229110075F5A4 /* MyARApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = MyARApp.entitlements; path = MyARApp/MyARApp.entitlements; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-MyARApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyARApp.debug.xcconfig"; path = "Target Support Files/Pods-MyARApp/Pods-MyARApp.debug.xcconfig"; sourceTree = "<group>"; };
+		501E527102764C8EBAD6021D /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Thin.ttf"; path = "../src/assets/fonts/Pretendard-Thin.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-MyARApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyARApp.release.xcconfig"; path = "Target Support Files/Pods-MyARApp/Pods-MyARApp.release.xcconfig"; sourceTree = "<group>"; };
+		59A6B8982739466E816C5D92 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraBold.ttf"; path = "../src/assets/fonts/Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-MyARApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyARApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = MyARApp/AppDelegate.swift; sourceTree = "<group>"; };
+		7D5C9AABA2994C7A92B1EE5E /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Regular.ttf"; path = "../src/assets/fonts/Pretendard-Regular.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MyARApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		83CE9EB7AC124E64BCEB7F6E /* Pretendard-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Light.ttf"; path = "../src/assets/fonts/Pretendard-Light.ttf"; sourceTree = "<group>"; };
+		83D313F9B42F46609DBD9018 /* Pretendard-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Black.ttf"; path = "../src/assets/fonts/Pretendard-Black.ttf"; sourceTree = "<group>"; };
+		93B773A79685424B9EA6B32D /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Bold.ttf"; path = "../src/assets/fonts/Pretendard-Bold.ttf"; sourceTree = "<group>"; };
+		C3B964946B5D488BA7C805D7 /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Medium.ttf"; path = "../src/assets/fonts/Pretendard-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		83D313F9B42F46609DBD9018 /* Pretendard-Black.ttf */ = {isa = PBXFileReference; name = "Pretendard-Black.ttf"; path = "../src/assets/fonts/Pretendard-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		93B773A79685424B9EA6B32D /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; name = "Pretendard-Bold.ttf"; path = "../src/assets/fonts/Pretendard-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		59A6B8982739466E816C5D92 /* Pretendard-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Pretendard-ExtraBold.ttf"; path = "../src/assets/fonts/Pretendard-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		EECED901BCAA4B5AAC2EEE9B /* Pretendard-ExtraLight.ttf */ = {isa = PBXFileReference; name = "Pretendard-ExtraLight.ttf"; path = "../src/assets/fonts/Pretendard-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		83CE9EB7AC124E64BCEB7F6E /* Pretendard-Light.ttf */ = {isa = PBXFileReference; name = "Pretendard-Light.ttf"; path = "../src/assets/fonts/Pretendard-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C3B964946B5D488BA7C805D7 /* Pretendard-Medium.ttf */ = {isa = PBXFileReference; name = "Pretendard-Medium.ttf"; path = "../src/assets/fonts/Pretendard-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7D5C9AABA2994C7A92B1EE5E /* Pretendard-Regular.ttf */ = {isa = PBXFileReference; name = "Pretendard-Regular.ttf"; path = "../src/assets/fonts/Pretendard-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		192259344E4F4BFDA2027256 /* Pretendard-SemiBold.ttf */ = {isa = PBXFileReference; name = "Pretendard-SemiBold.ttf"; path = "../src/assets/fonts/Pretendard-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		501E527102764C8EBAD6021D /* Pretendard-Thin.ttf */ = {isa = PBXFileReference; name = "Pretendard-Thin.ttf"; path = "../src/assets/fonts/Pretendard-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		EECED901BCAA4B5AAC2EEE9B /* Pretendard-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-ExtraLight.ttf"; path = "../src/assets/fonts/Pretendard-ExtraLight.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 		13B07FAE1A68108700A75B9A /* MyARApp */ = {
 			isa = PBXGroup;
 			children = (
+				360124732E4229110075F5A4 /* MyARApp.entitlements */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				761780EC2CA45674006654EE /* AppDelegate.swift */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -118,7 +120,7 @@
 			sourceTree = "<group>";
 		};
 		CC45BA497FA84FED9F918BF8 /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				83D313F9B42F46609DBD9018 /* Pretendard-Black.ttf */,
 				93B773A79685424B9EA6B32D /* Pretendard-Bold.ttf */,
@@ -132,7 +134,6 @@
 			);
 			name = Resources;
 			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -226,7 +227,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+			shellScript = "\n";
 		};
 		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -304,9 +305,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MyARApp/MyARApp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LP73ZV7WG9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MyARApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Smooth\nSmooth Beta\nSmooth Beta\nSmooth Beta\nSmooth Beta\nSmooth Beta";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -318,7 +323,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suin.smooth;
 				PRODUCT_NAME = MyARApp;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -332,8 +337,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MyARApp/MyARApp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LP73ZV7WG9;
 				INFOPLIST_FILE = MyARApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Smooth\nSmooth Beta\nSmooth Beta\nSmooth Beta\nSmooth Beta\nSmooth Beta";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -345,7 +354,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suin.smooth;
 				PRODUCT_NAME = MyARApp;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
