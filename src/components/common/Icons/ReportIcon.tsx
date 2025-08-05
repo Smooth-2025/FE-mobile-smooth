@@ -1,6 +1,6 @@
 import { DEFAULT_ICON_COLOR, DEFAULT_ICON_SIZE } from '@/constants/icon.constants';
 import Svg, { Path } from 'react-native-svg';
-import { IconStyleProps } from './types';
+import { IconStyleProps } from './type';
 
 export function ReportIcon({
   size = DEFAULT_ICON_SIZE,
