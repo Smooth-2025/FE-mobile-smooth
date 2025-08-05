@@ -1,4 +1,4 @@
-import { Icon } from '@/components/common/icons';
+import { Icon } from '@/components/common/Icons';
 import { IconName } from '@/components/common/icons/types';
 import DriveScreen from '@/screens/drive/DriveScreen';
 import HomeScreen from '@/screens/home/HomeScreen';
