@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Platform } from 'react-native';
 import { Camera, useCameraDevices } from 'react-native-vision-camera';
+import AlertToast from '../common/AlertToast/AlertToast';
 import * as Styled from './AutoCamera.styles';
 
 export function AutoCamera() {
@@ -20,9 +21,8 @@ export function AutoCamera() {
     const timer = setTimeout(() => {
       setIsDriving(false);
       console.log('5초 후 주행 종료 → 카메라 비활성화');
-    }, 2000); // 5초 = 5000ms
-
-    return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 정리
+    }, 5000);
+    return () => clearTimeout(timer);
   }, []);
 
   const onCameraInitialized = () => {
@@ -39,7 +39,7 @@ export function AutoCamera() {
     return null;
   }
 
-  if (!device) {
+  if (!device || !devices) {
     console.warn(
       `${Platform.OS === 'ios' ? 'iOS' : 'Android'} 
       디바이스에서 후면 카메라를 사용할 수 없습니다.`,
@@ -58,6 +58,24 @@ export function AutoCamera() {
         video={false}
         onInitialized={onCameraInitialized}
         onError={onCameraError}
+      />
+      <AlertToast
+        title='큰 사고가 발생했습니다!'
+        content='차량에 큰 사고가 감지되었습니다. 부상이 있다면 즉시 구조를 요청하세요.'
+        type='accident-nearby'
+        position='top'
+      />
+      <AlertToast
+        title='전방에 장애물이 있습니다!'
+        content='주의해서 운전하세요.'
+        type='obstacle'
+        position='top'
+      />
+      <AlertToast
+        title='포트홀 발견'
+        content='속도를 줄이고 주의해서 주행하세요'
+        type='pothole'
+        position='top'
       />
     </Styled.Overlay>
   );

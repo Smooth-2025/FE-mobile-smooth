@@ -26,6 +26,8 @@ export const theme = {
     danger200: '#FFEBEE',
     danger100: '#FEF2F2',
     danger50: '#FFFBFB',
+    Warning600: '#FFAD0D',
+    Warning200: '#FFF7E1',
     black: '#000000',
     white: '#ffffff',
     black_a60: 'rgba(0, 0, 0, 0.6)',

@@ -1,5 +1,5 @@
 import { Icon } from '@/components/common/Icons';
-import { IconName } from '@/components/common/icons/types';
+import { IconName } from '@/components/common/Icons/type';
 import DriveScreen from '@/screens/drive/DriveScreen';
 import HomeScreen from '@/screens/home/HomeScreen';
 import MypageScreen from '@/screens/myPage/MypageScreen';
