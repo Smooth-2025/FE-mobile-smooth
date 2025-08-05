@@ -1,8 +1,8 @@
+import MainLayout from '@/layouts/MainLayout';
 import LoginScreen from '@/screens/auth/LoginScreen';
 import { theme } from '@/styles/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import MainTabs from './MainTabs';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,7 +26,7 @@ const AppNavigator = () => {
         />
         <Stack.Screen
           name='Main'
-          component={MainTabs}
+          component={MainLayout}
           options={{
             contentStyle: { backgroundColor: theme.colors.bg_page },
           }}
