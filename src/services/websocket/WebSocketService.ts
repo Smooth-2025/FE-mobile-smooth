@@ -2,6 +2,8 @@
 import { Client } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
 import { getWebSocketConfig } from './WebSocketConfig';
+import { AlertMessage } from './alertTypes';
+import { subscribeToAlertTopic } from './subscribeHandlers';
 import { ConnectionStatus, WebSocketCallbacks, WebSocketConfig } from './types';
 
 class WebSocketService {
@@ -11,6 +13,7 @@ class WebSocketService {
   private reconnectTimer: ReturnType<typeof setTimeout> | null = null;
   private callbacks: WebSocketCallbacks = {};
   private config: WebSocketConfig;
+  private userId: string | null = null;
 
   constructor() {
     this.config = getWebSocketConfig();
@@ -33,7 +36,7 @@ class WebSocketService {
   }
 
   // WebSocket 연결
-  public connect(): Promise<void> {
+  public connect(userId: string): Promise<void> {
     return new Promise((resolve, reject) => {
       if (
         this.connectionStatus === ConnectionStatus.CONNECTING ||
@@ -43,6 +46,7 @@ class WebSocketService {
         return;
       }
 
+      this.userId = userId;
       this.setConnectionStatus(ConnectionStatus.CONNECTING);
       console.log(`🚗 차량 WebSocket 연결 시도: ${this.config.wsUrl}`);
 
@@ -65,6 +69,11 @@ class WebSocketService {
         console.log('✅ 차량 WebSocket 연결 성공:', frame);
         this.setConnectionStatus(ConnectionStatus.CONNECTED);
         this.reconnectAttempts = 0;
+
+        if (this.userId) {
+          subscribeToAlertTopic(this.userId); // 알림 토픽 구독
+        }
+
         // 사용자 알림 구독 제거
         this.callbacks.onConnect?.();
         resolve();
@@ -139,7 +148,12 @@ class WebSocketService {
     );
 
     this.reconnectTimer = setTimeout(() => {
-      this.connect().catch(error => {
+      if (!this.userId) {
+        console.error('❌ 재연결 시 userId가 없습니다.');
+        return;
+      }
+
+      this.connect(this.userId).catch(error => {
         console.error('차량 재연결 실패:', error);
       });
     }, this.config.reconnectInterval);
@@ -172,14 +186,27 @@ class WebSocketService {
   }
 
   // 수동 재연결
-  public reconnect() {
+  public reconnect(): Promise<void> {
+    if (!this.userId) {
+      return Promise.reject(new Error('❌ 재연결 시 userId가 설정되지 않음'));
+    }
     this.disconnect();
-    return this.connect();
+    return this.connect(this.userId);
   }
 
   // 현재 설정 조회
   public getConfig(): WebSocketConfig {
     return { ...this.config };
+  }
+
+  // 외부에서 STOMP 클라이언트 접근
+  public getClient(): Client | null {
+    return this.client;
+  }
+
+  // 알림 콜백 수동 호출 (구독 핸들러에서 사용)
+  public invokeAlertCallback(message: AlertMessage) {
+    this.callbacks.onAlert?.(message);
   }
 }
 
