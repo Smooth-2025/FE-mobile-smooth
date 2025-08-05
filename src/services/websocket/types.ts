@@ -1,5 +1,7 @@
 // src/services/websocket/types.ts
 
+import { AlertMessage } from './alertTypes';
+
 export enum ConnectionStatus {
   DISCONNECTED = 'DISCONNECTED',
   CONNECTING = 'CONNECTING',
@@ -23,6 +25,7 @@ export interface WebSocketCallbacks {
   onDisconnect?: () => void;
   onError?: (error: any) => void;
   onStatusChange?: (status: ConnectionStatus) => void;
+  onAlert?: (message: AlertMessage) => void;
 }
 
 // Hook 반환 타입 (차량용)
