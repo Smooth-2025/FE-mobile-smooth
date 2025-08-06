@@ -74,7 +74,7 @@ class WebSocketService {
           subscribeToAlertTopic(this.userId); // 알림 토픽 구독
         }
 
-        // 사용자 알림 구독 제거
+        // 연결 완료 콜백
         this.callbacks.onConnect?.();
         resolve();
       };
