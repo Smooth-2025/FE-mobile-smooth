@@ -9,16 +9,23 @@ export const subscribeToAlertTopic = (userId: string) => {
     return;
   }
 
-  const destination = `/topic/user/${userId}/alerts`;
+  const destination = `/user/${userId}/alert`;
   console.log(`📩 알림 토픽 구독: ${destination}`);
+  console.log(`📩 알림 토픽 구독 시도: /user/${userId}/alert`);
 
-  client.subscribe(destination, message => {
-    try {
-      const alert: AlertMessage = JSON.parse(message.body);
-      console.log('🚨 알림 수신:', alert);
-      WebSocketService.invokeAlertCallback(alert); // 내부에서 콜백 호출
-    } catch (error) {
-      console.error('❌ 메시지 파싱 실패:', error);
-    }
-  });
+  const subscriptionId = `alert-sub-${userId}`;
+
+  client.subscribe(
+    destination,
+    message => {
+      try {
+        const alert: AlertMessage = JSON.parse(message.body);
+        console.log('🚨 알림 수신:', alert);
+        WebSocketService.invokeAlertCallback(alert); // 내부에서 콜백 호출
+      } catch (error) {
+        console.error('❌ 메시지 파싱 실패:', error);
+      }
+    },
+    { id: subscriptionId },
+  );
 };
