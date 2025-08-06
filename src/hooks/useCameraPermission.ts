@@ -1,17 +1,21 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { Alert, Linking, Platform } from 'react-native';
 import { useCameraPermission } from 'react-native-vision-camera';
+import { useSelector } from 'react-redux';
 import { ConnectionStatus } from '../services/websocket/types';
+import { RootState } from '../store';
 import { useWebSocket } from './useWebSocket';
 
 export function useCameraPermissionHandler() {
   const { hasPermission, requestPermission } = useCameraPermission();
+  const userId = useSelector((state: RootState) => state.user.userId) as string;
+
   const {
     connectionStatus,
     isConnected,
     connect: connectWebSocket,
     disconnect: disconnectWebSocket,
-  } = useWebSocket({ autoConnect: false }); // 웹소켓 자동 연결 해제
+  } = useWebSocket({ autoConnect: false, userId }); // 웹소켓 자동 연결 해제
 
   const isRequestingPermission = useRef(false);
 
