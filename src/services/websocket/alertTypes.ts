@@ -1,9 +1,19 @@
-// AlertMessageDto와 매핑되는 알림 종류
 export type AlertType = 'accident' | 'accident-nearby' | 'obstacle' | 'pothole' | 'start' | 'end';
 
-// 실제 수신할 메시지 구조
-export interface AlertMessage {
-  type: AlertType; // 알림의 유형
-  title: string; // UI에 표시할 제목
-  content: string; // UI에 표시할 본문
+export interface AlertMessageBase {
+  type: AlertType;
 }
+
+// 일반 알림 (사고, 장애물 등)
+export interface AlertTextMessage extends AlertMessageBase {
+  title: string;
+  content: string;
+}
+
+// 시간 알림 (start/end)
+export interface AlertTimestampMessage extends AlertMessageBase {
+  timestamp: string;
+}
+
+// 통합 타입
+export type AlertMessage = AlertTextMessage | AlertTimestampMessage;

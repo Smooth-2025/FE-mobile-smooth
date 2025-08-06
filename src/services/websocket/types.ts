@@ -41,4 +41,5 @@ export interface UseWebSocketReturn {
 // Hook props 타입 (차량용)
 export interface UseWebSocketProps {
   autoConnect?: boolean;
+  userId?: string;
 }
