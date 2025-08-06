@@ -1,23 +1,28 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { type UseWebSocketProps, type UseWebSocketReturn } from '../services/websocket';
 import { ConnectionStatus } from '../services/websocket/types';
 import WebSocketService from '../services/websocket/WebSocketService';
+import { RootState } from '../store';
 
 export const useWebSocket = ({
   autoConnect = true,
 }: UseWebSocketProps = {}): UseWebSocketReturn => {
+  const userId = useSelector((state: RootState) => state.user.userId) as string;
   const [connectionStatus, setConnectionStatus] = useState<ConnectionStatus>(
     WebSocketService.getConnectionStatus(),
   );
 
+  const userIdRef = useRef<string | null>(userId ?? null);
+
   // WebSocket 연결
-  const connect = useCallback(async () => {
-    try {
-      await WebSocketService.connect();
-    } catch (error) {
-      console.error('차량 WebSocket 연결 실패:', error);
-      throw error;
+  const connect = useCallback(async (newUserId?: string) => {
+    const id = newUserId ?? userIdRef.current;
+    if (!id) {
+      throw new Error('userId 없음 - WebSocket 연결 불가');
     }
+    userIdRef.current = id;
+    await WebSocketService.connect(id);
   }, []);
 
   // WebSocket 연결 해제
@@ -27,6 +32,11 @@ export const useWebSocket = ({
 
   // WebSocket 재연결
   const reconnect = useCallback(async () => {
+    const id = userIdRef.current;
+    if (!id) {
+      console.warn('재연결 시 userID 없음');
+      return;
+    }
     return WebSocketService.reconnect();
   }, []);
 
@@ -55,10 +65,17 @@ export const useWebSocket = ({
 
   // 자동 연결
   useEffect(() => {
-    if (autoConnect && !WebSocketService.isConnected()) {
-      connect().catch(console.error);
+    if (autoConnect && userId) {
+      const run = async () => {
+        try {
+          await connect(userId);
+        } catch (e) {
+          console.error('자동 연결 실패:', e);
+        }
+      };
+      run();
     }
-  }, [autoConnect, connect]);
+  }, [autoConnect, userId, connect]);
 
   // 컴포넌트 언마운트 시 연결 해제
   useEffect(() => {
