@@ -4,7 +4,7 @@ import { WebSocketConfig } from './types';
 export const wsConfig: WebSocketConfig = {
   //개발환경: Android 에뮬레이터용
 
-  wsUrl: __DEV__ ? 'ws://10.0.2.2:8080/ws' : 'wss://your-production-domain.com/ws',
+  wsUrl: __DEV__ ? 'http://10.0.2.2:8080/ws' : 'wss://your-production-domain.com/ws',
 
   apiUrl: __DEV__ ? 'http://10.0.2.2:8080' : 'https://your-production-domain.com',
 
