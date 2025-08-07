@@ -4,16 +4,16 @@ import WebSocketService from './WebSocketService';
 export const subscribeToAlertTopic = (userId: string) => {
   const client = WebSocketService.getClient();
 
-  if (!client || !WebSocketService.isConnected()) {
+  if (!client || !client.connected) {
     console.warn('⚠️ WebSocket 연결되지 않음 - 구독 실패');
     return;
   }
 
   const destination = `/user/${userId}/alert`;
+  const subscriptionId = `alert-sub-${userId}`;
+
   console.log(`📩 알림 토픽 구독: ${destination}`);
   console.log(`📩 알림 토픽 구독 시도: /user/${userId}/alert`);
-
-  const subscriptionId = `alert-sub-${userId}`;
 
   client.subscribe(
     destination,

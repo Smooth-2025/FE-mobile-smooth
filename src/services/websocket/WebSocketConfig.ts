@@ -20,12 +20,12 @@ export const wsConfig: WebSocketConfig = {
 // 개발환경별 설정 오버라이드
 export const getWebSocketConfig = (): WebSocketConfig => {
   // 실제 기기 테스트용 설정 (WiFi IP 직접 입력)
-  if (__DEV__ && false) {
+  if (__DEV__ && true) {
     // 필요시 true로 변경
     return {
       ...wsConfig,
-      wsUrl: 'ws://192.168.1.100:8080/ws', // 실제 WiFi IP로 변경 필요
-      apiUrl: 'http://192.168.1.100:8080',
+      wsUrl: 'http://10.0.2.2:8080/ws', // 실제 WiFi IP로 변경 필요
+      apiUrl: 'http://10.0.2.2:8080',
     };
   }
 

@@ -17,6 +17,29 @@ export const useWebSocket = ({
 
   const userIdRef = useRef<string | null>(userId ?? null);
 
+  // WebSocket 콜백 설정
+  useEffect(() => {
+    WebSocketService.setCallbacks({
+      onConnect: () => {
+        console.log('🚗 차량 WebSocket 연결됨');
+        WebSocketService.getClient()?.publish({
+          destination: '/app/ping',
+          body: '',
+        });
+      },
+
+      onDisconnect: () => {
+        console.log('🚗 차량 WebSocket 연결 해제됨');
+      },
+      onError: error => {
+        console.error('🚗 차량 WebSocket 에러:', error);
+      },
+      onStatusChange: status => {
+        setConnectionStatus(status);
+      },
+    });
+  }, []);
+
   // WebSocket 연결
   const connect = useCallback(async (newUserId?: string) => {
     const id = newUserId ?? userIdRef.current;
@@ -45,24 +68,6 @@ export const useWebSocket = ({
   // 차량 명령 전송
   const sendCommand = useCallback((command: string, data: any): boolean => {
     return WebSocketService.sendVehicleCommand(command, data);
-  }, []);
-
-  // WebSocket 콜백 설정
-  useEffect(() => {
-    WebSocketService.setCallbacks({
-      onConnect: () => {
-        console.log('🚗 차량 WebSocket 연결됨');
-      },
-      onDisconnect: () => {
-        console.log('🚗 차량 WebSocket 연결 해제됨');
-      },
-      onError: error => {
-        console.error('🚗 차량 WebSocket 에러:', error);
-      },
-      onStatusChange: status => {
-        setConnectionStatus(status);
-      },
-    });
   }, []);
 
   // 자동 연결
