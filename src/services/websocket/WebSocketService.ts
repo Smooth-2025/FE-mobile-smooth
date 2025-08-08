@@ -47,31 +47,20 @@ class WebSocketService {
       this.client = new Client({
         brokerURL: this.config.wsUrl,
         connectHeaders: {
-          login: 'test-user-1234',
-          passcode: 'guest',
           'user-id': userId,
         },
-        // webSocketFactory: () => {
-        //   const ws = new w3cwebsocket(this.config.wsUrl);
-        //   ws.onopen = () => {
-        //     console.log('웹소켓 연결 성공');
-        //   };
-        //   return ws;
-        // },
-
-        reconnectDelay: 0,
+        reconnectDelay: this.config.reconnectInterval,
         debug: str => {
           if (str.startsWith('>>> CONNECT')) {
             console.log('🔌 [STOMP] CONNECT 요청 전송');
           } else if (str.startsWith('<<< CONNECTED')) {
             console.log('✅ [STOMP] CONNECTED 응답 수신');
+          } else if (str.startsWith('>>> SEND')) {
+            console.log('📤 [STOMP] 메시지 전송:', str);
           } else {
             console.log('[STOMP Debug]:', str);
           }
         },
-
-        forceBinaryWSFrames: true,
-        appendMissingNULLonIncoming: true,
         heartbeatIncoming: this.config.heartbeatIncoming,
         heartbeatOutgoing: this.config.heartbeatOutgoing,
       });
@@ -94,9 +83,9 @@ class WebSocketService {
         this.client?.publish({
           destination: '/app/ping',
           headers: {
-            'user-id': userId, // ⚠️ 여기 헤더도 있어야 서버쪽 로그가 뜸
+            'user-id': userId,
           },
-          body: 'ping from client',
+          body: JSON.stringify({ message: 'ping from client', userId }),
         });
 
         this.callbacks.onConnect?.();
@@ -135,10 +124,18 @@ class WebSocketService {
       return false;
     }
 
+    if (!this.userId) {
+      console.error('❌ userId가 설정되지 않음');
+      return false;
+    }
+
     try {
       this.client.publish({
         destination: '/app/vehicle/command',
-        body: JSON.stringify({ command, data }),
+        headers: {
+          'user-id': this.userId,
+        },
+        body: JSON.stringify({ command, data, userId: this.userId }),
       });
       console.log('🚗 차량 명령 전송:', command);
       return true;
@@ -229,15 +226,29 @@ class WebSocketService {
       return false;
     }
 
+    if (!this.userId) {
+      console.error('❌ userId가 설정되지 않음');
+      return false;
+    }
+
+    // payload에 userId 추가 (백엔드에서 필요)
+    const messagePayload = {
+      ...payload,
+      userId: this.userId,
+    };
+
     try {
       this.client.publish({
         destination: '/app/alert',
+        headers: {
+          'user-id': this.userId,
+        },
         body: JSON.stringify({
           type,
-          payload,
+          payload: messagePayload,
         }),
       });
-      console.log(`🚨 테스트 알림 전송: ${type}`);
+      console.log(`🚨 테스트 알림 전송: ${type}`, messagePayload);
       return true;
     } catch (error) {
       console.error('❌ 테스트 알림 전송 실패:', error);

@@ -2,7 +2,7 @@ import { WebSocketConfig } from './types';
 
 // 기본 WebSocket 설정
 export const wsConfig: WebSocketConfig = {
-  //개발환경: Android 에뮬레이터용
+  //개발환경: Android 에뮬레이터용 - localhost:8080으로 수정
 
   wsUrl: __DEV__ ? 'ws://10.0.2.2:8080/ws' : 'wss://your-production-domain.com/ws',
 

@@ -4,7 +4,7 @@ import WebSocketService from './WebSocketService';
 export const subscribeToAlertTopic = (userId: string) => {
   const client = WebSocketService.getClient();
 
-  if (!client || !client.connected) {
+  if (!client || !WebSocketService.isConnected()) {
     console.warn('⚠️ WebSocket 연결되지 않음 - 구독 실패');
     return;
   }

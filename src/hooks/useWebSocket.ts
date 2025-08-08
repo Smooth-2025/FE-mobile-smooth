@@ -23,10 +23,7 @@ export const useWebSocket = ({
     WebSocketService.setCallbacks({
       onConnect: () => {
         console.log('🚗 차량 WebSocket 연결됨');
-        WebSocketService.getClient()?.publish({
-          destination: '/app/ping',
-          body: '',
-        });
+        // ping은 이미 WebSocketService.connect()에서 자동으로 전송됨
       },
 
       onDisconnect: () => {
