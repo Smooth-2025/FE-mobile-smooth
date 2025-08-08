@@ -1,5 +1,4 @@
 import { Client } from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
 import { getWebSocketConfig } from './WebSocketConfig';
 import { AlertMessage } from './alertTypes';
 import { subscribeToAlertTopic } from './subscribeHandlers';
@@ -45,18 +44,34 @@ class WebSocketService {
       this.setConnectionStatus(ConnectionStatus.CONNECTING);
       console.log(`🚗 차량 WebSocket 연결 시도: ${this.config.wsUrl}`);
 
-      const socket = new SockJS(this.config.wsUrl);
-
       this.client = new Client({
-        webSocketFactory: () => socket as unknown as WebSocket,
+        brokerURL: this.config.wsUrl,
+        connectHeaders: {
+          login: 'test-user-1234',
+          passcode: 'guest',
+          'user-id': userId,
+        },
+        // webSocketFactory: () => {
+        //   const ws = new w3cwebsocket(this.config.wsUrl);
+        //   ws.onopen = () => {
+        //     console.log('웹소켓 연결 성공');
+        //   };
+        //   return ws;
+        // },
+
         reconnectDelay: 0,
         debug: str => {
-          console.log('STOMP Debug:', str);
+          if (str.startsWith('>>> CONNECT')) {
+            console.log('🔌 [STOMP] CONNECT 요청 전송');
+          } else if (str.startsWith('<<< CONNECTED')) {
+            console.log('✅ [STOMP] CONNECTED 응답 수신');
+          } else {
+            console.log('[STOMP Debug]:', str);
+          }
         },
-        connectHeaders: {
-          login: 'guest',
-          passcode: 'guest',
-        },
+
+        forceBinaryWSFrames: true,
+        appendMissingNULLonIncoming: true,
         heartbeatIncoming: this.config.heartbeatIncoming,
         heartbeatOutgoing: this.config.heartbeatOutgoing,
       });
@@ -78,6 +93,9 @@ class WebSocketService {
 
         this.client?.publish({
           destination: '/app/ping',
+          headers: {
+            'user-id': userId, // ⚠️ 여기 헤더도 있어야 서버쪽 로그가 뜸
+          },
           body: 'ping from client',
         });
 
@@ -97,6 +115,7 @@ class WebSocketService {
         this.setConnectionStatus(ConnectionStatus.ERROR);
         this.callbacks.onError?.(error);
         this.handleReconnect();
+        reject(error);
       };
 
       this.client.onDisconnect = () => {
@@ -200,6 +219,30 @@ class WebSocketService {
 
   public invokeAlertCallback(message: AlertMessage) {
     this.callbacks.onAlert?.(message);
+  }
+
+  //테스트 알람
+
+  public sendTestAlert(type: string, payload: Record<string, any>): boolean {
+    if (!this.client || !this.isConnected()) {
+      console.error('❌ WebSocket이 연결되지 않음');
+      return false;
+    }
+
+    try {
+      this.client.publish({
+        destination: '/app/alert',
+        body: JSON.stringify({
+          type,
+          payload,
+        }),
+      });
+      console.log(`🚨 테스트 알림 전송: ${type}`);
+      return true;
+    } catch (error) {
+      console.error('❌ 테스트 알림 전송 실패:', error);
+      return false;
+    }
   }
 }
 

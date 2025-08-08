@@ -7,10 +7,11 @@ import { RootState } from '../store';
 
 export const useWebSocket = ({
   autoConnect = true,
-  userId: testUserId,
+  userId: passedUserId,
 }: UseWebSocketProps = {}): UseWebSocketReturn => {
   const reduxUserId = useSelector((state: RootState) => state.user.userId) as string;
-  const userId = testUserId || reduxUserId;
+  const userId = passedUserId || reduxUserId;
+
   const [connectionStatus, setConnectionStatus] = useState<ConnectionStatus>(
     WebSocketService.getConnectionStatus(),
   );

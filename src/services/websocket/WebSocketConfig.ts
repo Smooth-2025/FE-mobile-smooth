@@ -4,7 +4,7 @@ import { WebSocketConfig } from './types';
 export const wsConfig: WebSocketConfig = {
   //개발환경: Android 에뮬레이터용
 
-  wsUrl: __DEV__ ? 'http://10.0.2.2:8080/ws' : 'wss://your-production-domain.com/ws',
+  wsUrl: __DEV__ ? 'ws://10.0.2.2:8080/ws' : 'wss://your-production-domain.com/ws',
 
   apiUrl: __DEV__ ? 'http://10.0.2.2:8080' : 'https://your-production-domain.com',
 
@@ -20,11 +20,11 @@ export const wsConfig: WebSocketConfig = {
 // 개발환경별 설정 오버라이드
 export const getWebSocketConfig = (): WebSocketConfig => {
   // 실제 기기 테스트용 설정 (WiFi IP 직접 입력)
-  if (__DEV__ && true) {
+  if (__DEV__ && false) {
     // 필요시 true로 변경
     return {
       ...wsConfig,
-      wsUrl: 'http://10.0.2.2:8080/ws', // 실제 WiFi IP로 변경 필요
+      wsUrl: 'ws://10.0.2.2:8080/ws', // 실제 WiFi IP로 변경 필요
       apiUrl: 'http://10.0.2.2:8080',
     };
   }

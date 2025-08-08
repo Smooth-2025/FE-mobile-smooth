@@ -12,7 +12,6 @@ export const subscribeToAlertTopic = (userId: string) => {
   const destination = `/user/${userId}/alert`;
   const subscriptionId = `alert-sub-${userId}`;
 
-  console.log(`📩 알림 토픽 구독: ${destination}`);
   console.log(`📩 알림 토픽 구독 시도: /user/${userId}/alert`);
 
   client.subscribe(
