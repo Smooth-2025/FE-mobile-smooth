@@ -4,8 +4,13 @@ export { default as WebSocketService } from './WebSocketService';
 // 설정
 export { API_ENDPOINTS, getWebSocketConfig, wsConfig } from './WebSocketConfig';
 
-// 차량용 타입
+// 모든 타입들 (알림 + WebSocket)
 export type {
+  AlertType,
+  AlertMessage,
+  AlertMessageBase,
+  AlertTextMessage,
+  AlertTimestampMessage,
   ConnectionStatus,
   UseWebSocketProps,
   UseWebSocketReturn,
